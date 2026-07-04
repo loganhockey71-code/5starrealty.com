@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(){var t=localStorage.getItem('theme')||'light';document.documentElement.setAttribute('data-theme',t);})();</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Properties | 5 Star Realty | Hand-Picked South Florida Homes</title>
+<meta name="description" content="Browse hand-picked properties from 5 Star Realty — homes for sale across South Florida, curated by our team. Call 561-400-2196.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://5starrealty.com/properties.html">
+<link rel="icon" href="https://i.imgur.com/1M6E7YB.jpg">
+
+<meta property="og:title" content="Properties | 5 Star Realty">
+<meta property="og:description" content="Hand-picked properties curated by the 5 Star Realty team across South Florida.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://5starrealty.com/properties.html">
+<meta property="og:image" content="https://i.imgur.com/RJV9XBt.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+
+<style>
+.listings-page-header {
+  padding: clamp(120px, 14vw, 160px) 0 40px;
+  background: var(--bg-base);
+}
+
+/* Owner-only controls (shown after admin login) */
+.owner-add-btn {
+  padding: 9px 18px; background: var(--accent); color: #fff; border: none;
+  border-radius: var(--radius-sm); font-weight: 600; cursor: pointer; font-family: inherit; font-size: 0.85rem;
+}
+.owner-remove-btn {
+  position: absolute; top: 14px; right: 14px; z-index: 2;
+  padding: 5px 12px; background: rgba(192,57,43,0.92); color: #fff; border: none;
+  border-radius: var(--radius-sm); font-size: 0.74rem; font-weight: 700; cursor: pointer;
+  text-transform: uppercase; letter-spacing: 0.04em;
+}
+.owner-form-overlay {
+  position: fixed; inset: 0; background: rgba(10,10,10,0.6);
+  display: none; align-items: flex-start; justify-content: center;
+  padding: 40px 20px; overflow-y: auto; z-index: 1000;
+}
+.owner-form-overlay.open { display: flex; }
+.owner-form-box {
+  background: var(--bg-surface); border-radius: var(--radius-lg); max-width: 560px; width: 100%; padding: 32px;
+}
+.owner-form-box h2 { font-family: var(--font-display); margin-bottom: 20px; }
+.owner-field { margin-bottom: 16px; }
+.owner-field label { display: block; font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 6px; }
+.owner-field input, .owner-field select, .owner-field textarea {
+  width: 100%; padding: 10px 12px; border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm); background: var(--bg-surface); color: var(--text-primary);
+  font-family: inherit; font-size: 0.95rem;
+}
+.owner-field textarea { resize: vertical; min-height: 80px; }
+.owner-form-row { display: flex; gap: 12px; }
+.owner-form-row .owner-field { flex: 1; }
+.owner-form-actions { display: flex; gap: 10px; margin-top: 16px; }
+.owner-form-actions button {
+  flex: 1; padding: 11px; border-radius: var(--radius-sm); cursor: pointer; font-family: inherit; font-weight: 600;
+}
+.owner-form-actions .owner-cancel-btn { background: transparent; border: 1px solid var(--border-default); color: var(--text-primary); }
+.owner-form-actions .owner-save-btn { background: var(--accent); border: none; color: #fff; }
+
+@media (max-width: 640px) {
+  .owner-form-row { flex-direction: column; gap: 0; }
+  .owner-add-btn { width: 100%; padding: 11px 18px; }
+}
+</style>
+</head>
+<body data-page="properties">
+
+<!-- NAV -->
+<nav id="main-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="https://i.imgur.com/1M6E7YB.jpg" alt="5 Star Realty" class="logo-img">
+      <span class="logo-text">5 Star Realty</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="team.html" class="nav-link">Meet the Team</a></li>
+      <li><a href="properties.html" class="nav-link active">Properties</a></li>
+      <li><a href="services.html" class="nav-link">Search MLS</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z"/></svg>
+        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+      <a href="tel:+15614002196" class="btn-primary nav-cta">Call 561-400-2196</a>
+      <button class="nav-mobile-toggle" aria-label="Menu" onclick="toggleMobileMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html" class="mobile-link">Home</a>
+    <a href="team.html" class="mobile-link">Meet the Team</a>
+    <a href="properties.html" class="mobile-link">Properties</a>
+    <a href="services.html" class="mobile-link">Search MLS</a>
+    <a href="contact.html" class="mobile-link">Contact</a>
+    <a href="tel:+15614002196" class="btn-primary mobile-cta">Call 561-400-2196</a>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<section class="listings-page-header">
+  <div class="section-inner">
+    <p class="section-eyebrow" data-editable="properties.header_eyebrow">Curated by Our Team</p>
+    <h1 class="page-title" data-editable="properties.header_title">Our current<br><span class="accent">properties.</span></h1>
+    <p class="page-subtitle" data-editable="properties.header_sub">A hand-picked selection of homes our team is actively representing. Looking for something more specific? <a href="services.html" class="text-link">Search the full MLS →</a></p>
+  </div>
+</section>
+
+<!-- LISTINGS -->
+<section class="listings-section">
+  <div class="section-inner">
+    <div class="listings-head">
+      <h2 class="h2" data-editable="properties.available_heading">Available now</h2>
+      <div class="listings-tabs">
+        <button class="tab-btn active" data-filter="all">All</button>
+        <button class="tab-btn" data-filter="active">Active</button>
+        <button class="tab-btn" data-filter="pending">Pending</button>
+        <button class="tab-btn" data-filter="sold">Sold</button>
+      </div>
+      <button class="owner-add-btn hidden" id="ownerAddListingBtn">+ Add Property</button>
+    </div>
+    <div class="listings-grid" id="listingsGrid">
+      <p class="listings-empty">Loading properties…</p>
+    </div>
+  </div>
+</section>
+
+<!-- DETAIL MODAL -->
+<div class="listing-modal-overlay" id="listingModal">
+  <div class="listing-modal">
+    <button class="listing-modal-close" id="listingModalClose" aria-label="Close">&times;</button>
+    <div class="listing-modal-gallery">
+      <img id="listingModalImg" src="" alt="">
+      <button class="listing-modal-nav prev" id="listingModalPrev" aria-label="Previous photo">&#8249;</button>
+      <button class="listing-modal-nav next" id="listingModalNext" aria-label="Next photo">&#8250;</button>
+    </div>
+    <div class="listing-modal-body">
+      <div class="listing-top">
+        <h3 id="listingModalTitle"></h3>
+        <span class="listing-price" id="listingModalPrice"></span>
+      </div>
+      <p class="listing-place" id="listingModalPlace"></p>
+      <p class="listing-specs" id="listingModalSpecs"></p>
+      <p class="listing-modal-desc" id="listingModalDesc"></p>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="section-inner cta-inner">
+    <h2 class="cta-title" data-editable="properties.cta_title">Don't see what you're looking for?</h2>
+    <p class="cta-sub" data-editable="properties.cta_sub">Tell us what you need and we'll help you find it — or search the full MLS yourself.</p>
+    <div class="cta-buttons">
+      <a href="services.html" class="btn-primary" data-editable="properties.cta_btn_primary">Search MLS</a>
+      <a href="contact.html" class="btn-ghost" data-editable="properties.cta_btn_secondary">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand-col">
+      <div class="footer-logo">
+        <img src="https://i.imgur.com/1M6E7YB.jpg" alt="5 Star Realty">
+        <span>5 Star Realty</span>
+      </div>
+      <p class="footer-tagline">A residential brokerage serving all of South Florida — buyers, sellers, landlords, and tenants welcome.</p>
+      <p class="footer-rating">★★★★★ &nbsp;4.7 Google rating</p>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/5StarRealty/" target="_blank" rel="noopener" class="social-link" aria-label="Facebook">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/batelbenzino/" target="_blank" rel="noopener" class="social-link" aria-label="Instagram">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <a href="index.html">Home</a>
+      <a href="team.html">Meet the Team</a>
+      <a href="properties.html">Properties</a>
+      <a href="services.html">Search MLS</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <a href="services.html">Buy a Home</a>
+      <a href="services.html">Sell a Home</a>
+      <a href="services.html">Rent</a>
+      <a href="contact.html">Free Valuation</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="tel:+15614002196">561-400-2196</a>
+      <a href="mailto:Betty@5starrealtyfl.com">Betty@5starrealtyfl.com</a>
+      <p class="footer-area">South Florida<br>Licensed Brokerage</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 5 Star Realty · Licensed Florida Brokerage · All rights reserved · <a href="privacy.html" style="color:inherit;opacity:0.7;border-bottom:1px solid currentColor;">Privacy Policy</a></p>
+  </div>
+</footer>
+
+<!-- OWNER ADD PROPERTY FORM (only shown when logged in as admin) -->
+<div class="owner-form-overlay" id="ownerFormOverlay">
+  <div class="owner-form-box">
+    <h2>Add Property</h2>
+    <form id="ownerListingForm">
+      <div class="owner-field">
+        <label for="ownerAddress">Address</label>
+        <input type="text" id="ownerAddress" name="address" required>
+      </div>
+      <div class="owner-field">
+        <label for="ownerCity">City / Area</label>
+        <input type="text" id="ownerCity" name="city">
+      </div>
+      <div class="owner-form-row">
+        <div class="owner-field">
+          <label for="ownerPrice">Price</label>
+          <input type="number" id="ownerPrice" name="price" required min="0">
+        </div>
+        <div class="owner-field">
+          <label for="ownerStatus">Status</label>
+          <select id="ownerStatus" name="status">
+            <option value="Active">Active</option>
+            <option value="Pending">Pending</option>
+            <option value="Sold">Sold</option>
+          </select>
+        </div>
+      </div>
+      <div class="owner-form-row">
+        <div class="owner-field">
+          <label for="ownerBeds">Beds</label>
+          <input type="number" id="ownerBeds" name="beds" required min="0">
+        </div>
+        <div class="owner-field">
+          <label for="ownerBaths">Baths</label>
+          <input type="number" id="ownerBaths" name="baths" required min="0" step="0.5">
+        </div>
+        <div class="owner-field">
+          <label for="ownerSqft">Sqft</label>
+          <input type="number" id="ownerSqft" name="sqft" required min="0">
+        </div>
+      </div>
+      <div class="owner-field">
+        <label for="ownerDescription">Description</label>
+        <textarea id="ownerDescription" name="description"></textarea>
+      </div>
+      <div class="owner-field">
+        <label for="ownerPhotos">Photos</label>
+        <input type="file" id="ownerPhotos" name="photos" accept="image/*" multiple>
+      </div>
+      <div class="owner-form-actions">
+        <button type="button" class="owner-cancel-btn" id="ownerCancelFormBtn">Cancel</button>
+        <button type="submit" class="owner-save-btn">Save Property</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/cookies.js"></script>
+<script src="js/content.js"></script>
+<script src="js/listings.js"></script>
+</body>
+</html>

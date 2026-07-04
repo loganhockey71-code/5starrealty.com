@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(){var t=localStorage.getItem('theme')||'light';document.documentElement.setAttribute('data-theme',t);})();</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin | 5 Star Realty</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="https://i.imgur.com/1M6E7YB.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+
+<style>
+.admin-shell { max-width: 1000px; margin: 0 auto; padding: clamp(110px, 12vw, 140px) 24px 80px; }
+.admin-shell h1 { font-family: var(--font-display); font-size: 1.9rem; margin-bottom: 8px; }
+.admin-sub { color: var(--text-secondary); margin-bottom: 32px; }
+
+/* Login */
+.admin-login-box {
+  max-width: 380px; margin: 80px auto; padding: 36px;
+  background: var(--surface-card); border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+}
+.admin-login-box h1 { font-size: 1.5rem; margin-bottom: 20px; text-align: center; }
+.admin-field { margin-bottom: 16px; }
+.admin-field label { display: block; font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 6px; }
+.admin-field input, .admin-field select, .admin-field textarea {
+  width: 100%; padding: 10px 12px; border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm); background: var(--bg-surface); color: var(--text-primary);
+  font-family: inherit; font-size: 0.95rem;
+}
+.admin-field textarea { resize: vertical; min-height: 90px; }
+.admin-error { color: #c0392b; font-size: 0.85rem; margin-bottom: 12px; min-height: 1.2em; }
+.admin-btn {
+  width: 100%; padding: 11px; background: var(--accent); color: #fff; border: none;
+  border-radius: var(--radius-sm); font-weight: 600; cursor: pointer; font-family: inherit;
+}
+.admin-btn:hover { background: var(--accent-soft); }
+
+/* Dashboard */
+.admin-topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+.admin-logout-btn {
+  background: transparent; border: 1px solid var(--border-default); color: var(--text-secondary);
+  padding: 9px 16px; border-radius: var(--radius-sm); cursor: pointer; font-family: inherit; font-size: 0.85rem;
+  min-height: 40px;
+}
+.admin-add-btn {
+  padding: 10px 20px; background: var(--accent); color: #fff; border: none; border-radius: var(--radius-sm);
+  font-weight: 600; cursor: pointer; font-family: inherit; margin-bottom: 24px;
+}
+.admin-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 0 -4px; }
+.admin-table { width: 100%; min-width: 540px; border-collapse: collapse; }
+.admin-table th, .admin-table td {
+  text-align: left; padding: 12px 10px; border-bottom: 1px solid var(--border-subtle); font-size: 0.9rem;
+}
+.admin-table th { color: var(--text-secondary); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.04em; }
+.admin-thumb { width: 56px; height: 42px; object-fit: cover; border-radius: 4px; background: var(--bg-base); }
+.admin-row-actions { display: flex; gap: 8px; }
+.admin-row-actions button {
+  background: transparent; border: 1px solid var(--border-default); color: var(--text-primary);
+  padding: 9px 14px; border-radius: var(--radius-sm); cursor: pointer; font-family: inherit; font-size: 0.82rem;
+  min-height: 40px;
+}
+.admin-row-actions button.danger { color: #c0392b; border-color: rgba(192,57,43,0.35); }
+.admin-status-pill { padding: 3px 10px; border-radius: 20px; font-size: 0.78rem; font-weight: 600; }
+.admin-status-pill.active { background: var(--accent-dim); color: var(--accent-text); }
+.admin-status-pill.pending { background: rgba(184,148,63,0.18); color: var(--accent-soft); }
+.admin-status-pill.sold { background: var(--border-default); color: var(--text-secondary); }
+
+/* Form modal */
+.admin-form-overlay {
+  position: fixed; inset: 0; background: rgba(10,10,10,0.6);
+  display: none; align-items: flex-start; justify-content: center;
+  padding: 40px 20px; overflow-y: auto; z-index: 1000;
+}
+.admin-form-overlay.open { display: flex; }
+.admin-form-box {
+  background: var(--bg-surface); border-radius: var(--radius-lg); max-width: 560px; width: 100%;
+  padding: 32px;
+}
+.admin-form-box h2 { font-family: var(--font-display); margin-bottom: 20px; }
+.admin-form-row { display: flex; gap: 12px; }
+.admin-form-row .admin-field { flex: 1; }
+.admin-existing-photos { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+.admin-existing-photo { position: relative; }
+.admin-existing-photo img { width: 70px; height: 52px; object-fit: cover; border-radius: 4px; }
+.admin-existing-photo button {
+  position: absolute; top: -6px; right: -6px; width: 20px; height: 20px; border-radius: 50%;
+  background: #c0392b; color: #fff; border: none; font-size: 0.7rem; cursor: pointer; line-height: 1;
+}
+.admin-form-actions { display: flex; gap: 10px; margin-top: 20px; }
+.admin-form-actions .admin-btn-secondary {
+  flex: 1; padding: 11px; background: transparent; border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm); cursor: pointer; font-family: inherit; color: var(--text-primary);
+}
+.admin-form-actions .admin-btn { flex: 1; }
+.hidden { display: none !important; }
+
+/* Section tabs */
+.admin-tabs { display: flex; gap: 8px; margin-bottom: 28px; border-bottom: 1px solid var(--border-subtle); }
+.admin-tab-btn {
+  padding: 10px 4px; margin-right: 20px; background: none; border: none; border-bottom: 2px solid transparent;
+  color: var(--text-secondary); font-family: inherit; font-size: 0.95rem; font-weight: 600; cursor: pointer;
+}
+.admin-tab-btn.active { color: var(--text-primary); border-bottom-color: var(--accent); }
+
+/* Page editor */
+.page-picker { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 28px; }
+.page-picker-btn {
+  padding: 8px 16px; background: var(--surface-card); border: 1px solid var(--border-default);
+  border-radius: 20px; cursor: pointer; font-family: inherit; font-size: 0.85rem; color: var(--text-primary);
+}
+.page-picker-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+.page-field { margin-bottom: 20px; }
+.page-field label { display: block; font-size: 0.8rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 6px; }
+.page-field input[type="text"], .page-field textarea {
+  width: 100%; padding: 10px 12px; border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm); background: var(--bg-surface); color: var(--text-primary);
+  font-family: inherit; font-size: 0.92rem;
+}
+.page-field textarea { resize: vertical; min-height: 70px; }
+.page-field-image { display: flex; align-items: center; gap: 14px; }
+.page-field-image img { width: 90px; height: 60px; object-fit: cover; border-radius: 6px; background: var(--bg-base); }
+.page-save-bar {
+  position: sticky; bottom: 0; background: var(--bg-base); padding: 16px 0; margin-top: 12px;
+  border-top: 1px solid var(--border-subtle); display: flex; align-items: center; gap: 16px;
+}
+.page-save-bar .admin-btn { width: auto; padding: 11px 28px; }
+.page-save-status { font-size: 0.85rem; color: var(--text-secondary); }
+
+@media (max-width: 640px) {
+  .admin-topbar { flex-direction: column; align-items: flex-start; gap: 14px; }
+  .admin-form-row { flex-direction: column; gap: 0; }
+  .admin-tab-btn { padding: 10px 2px; margin-right: 16px; min-height: 40px; }
+  .page-picker-btn { padding: 10px 16px; min-height: 40px; }
+  .page-field-image { flex-wrap: wrap; }
+  .page-save-bar { flex-direction: column; align-items: stretch; }
+  .page-save-bar .admin-btn { width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<div id="loginView" class="admin-login-box hidden">
+  <h1>5 Star Realty Admin</h1>
+  <p class="admin-error" id="loginError"></p>
+  <form id="loginForm">
+    <div class="admin-field">
+      <label for="loginUsername">Username</label>
+      <input type="text" id="loginUsername" name="username" required autocomplete="username">
+    </div>
+    <div class="admin-field">
+      <label for="loginPassword">Password</label>
+      <input type="password" id="loginPassword" name="password" required autocomplete="current-password">
+    </div>
+    <button type="submit" class="admin-btn">Log In</button>
+  </form>
+</div>
+
+<div id="dashboardView" class="admin-shell hidden">
+  <div class="admin-topbar">
+    <div>
+      <h1>5 Star Realty Admin</h1>
+      <p class="admin-sub">Manage properties and edit the text and photos shown on the site.</p>
+    </div>
+    <button class="admin-logout-btn" id="logoutBtn">Log Out</button>
+  </div>
+
+  <div class="admin-tabs">
+    <button class="admin-tab-btn active" id="tabListingsBtn">Manage Properties</button>
+    <button class="admin-tab-btn" id="tabPagesBtn">Edit Pages</button>
+  </div>
+
+  <div id="listingsPanel">
+    <button class="admin-add-btn" id="addListingBtn">+ Add Property</button>
+
+    <div class="admin-table-wrap">
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>Photo</th>
+            <th>Address</th>
+            <th>Price</th>
+            <th>Status</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="listingsTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div id="pagesPanel" class="hidden">
+    <div class="page-picker" id="pagePicker"></div>
+    <form id="pageContentForm">
+      <div id="pageFieldsContainer"></div>
+      <div class="page-save-bar">
+        <button type="submit" class="admin-btn">Save Page</button>
+        <span class="page-save-status" id="pageSaveStatus"></span>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ADD/EDIT FORM -->
+<div class="admin-form-overlay" id="formOverlay">
+  <div class="admin-form-box">
+    <h2 id="formTitle">Add Property</h2>
+    <form id="listingForm">
+      <input type="hidden" id="listingId" name="id">
+      <div class="admin-field">
+        <label for="address">Address</label>
+        <input type="text" id="address" name="address" required>
+      </div>
+      <div class="admin-field">
+        <label for="city">City / Area</label>
+        <input type="text" id="city" name="city">
+      </div>
+      <div class="admin-form-row">
+        <div class="admin-field">
+          <label for="price">Price</label>
+          <input type="number" id="price" name="price" required min="0">
+        </div>
+        <div class="admin-field">
+          <label for="status">Status</label>
+          <select id="status" name="status">
+            <option value="Active">Active</option>
+            <option value="Pending">Pending</option>
+            <option value="Sold">Sold</option>
+          </select>
+        </div>
+      </div>
+      <div class="admin-form-row">
+        <div class="admin-field">
+          <label for="beds">Beds</label>
+          <input type="number" id="beds" name="beds" required min="0">
+        </div>
+        <div class="admin-field">
+          <label for="baths">Baths</label>
+          <input type="number" id="baths" name="baths" required min="0" step="0.5">
+        </div>
+        <div class="admin-field">
+          <label for="sqft">Sqft</label>
+          <input type="number" id="sqft" name="sqft" required min="0">
+        </div>
+      </div>
+      <div class="admin-field">
+        <label for="description">Description</label>
+        <textarea id="description" name="description"></textarea>
+      </div>
+      <div class="admin-field" id="existingPhotosField" style="display:none;">
+        <label>Existing Photos (click × to remove)</label>
+        <div class="admin-existing-photos" id="existingPhotos"></div>
+      </div>
+      <div class="admin-field">
+        <label for="photos">Add Photos</label>
+        <input type="file" id="photos" name="photos" accept="image/*" multiple>
+      </div>
+      <div class="admin-form-actions">
+        <button type="button" class="admin-btn-secondary" id="cancelFormBtn">Cancel</button>
+        <button type="submit" class="admin-btn">Save Property</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="js/admin.js"></script>
+</body>
+</html>

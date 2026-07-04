@@ -1,0 +1,1297 @@
+{
+  "properties": [
+    { "key": "header_eyebrow", "label": "Header Eyebrow", "type": "text" },
+    { "key": "header_title", "label": "Header Title", "type": "text" },
+    { "key": "header_sub", "label": "Header Subtitle", "type": "text" },
+    { "key": "available_heading", "label": "Available Now Heading", "type": "text" },
+    { "key": "cta_title", "label": "CTA Title", "type": "text" },
+    { "key": "cta_sub", "label": "CTA Subtitle", "type": "text" },
+    { "key": "cta_btn_primary", "label": "CTA Primary Button Label", "type": "text" },
+    { "key": "cta_btn_secondary", "label": "CTA Secondary Button Label", "type": "text" }
+  ],
+  "index": [
+    {
+      "key": "hero_eyebrow",
+      "label": "Hero Eyebrow",
+      "type": "text"
+    },
+    {
+      "key": "hero_headline",
+      "label": "Hero Headline",
+      "type": "text"
+    },
+    {
+      "key": "hero_sub",
+      "label": "Hero Sub",
+      "type": "text"
+    },
+    {
+      "key": "hero_cta_primary",
+      "label": "Hero Cta Primary",
+      "type": "text"
+    },
+    {
+      "key": "cta_call_label",
+      "label": "Cta Call Label",
+      "type": "text"
+    },
+    {
+      "key": "google_badge_excellent",
+      "label": "Google Badge Excellent",
+      "type": "text"
+    },
+    {
+      "key": "stat_homes_closed_num",
+      "label": "Stat Homes Closed Num",
+      "type": "text"
+    },
+    {
+      "key": "stat_homes_closed_label",
+      "label": "Stat Homes Closed Label",
+      "type": "text"
+    },
+    {
+      "key": "stat_years_experience_num",
+      "label": "Stat Years Experience Num",
+      "type": "text"
+    },
+    {
+      "key": "stat_years_experience_label",
+      "label": "Stat Years Experience Label",
+      "type": "text"
+    },
+    {
+      "key": "intro_eyebrow",
+      "label": "Intro Eyebrow",
+      "type": "text"
+    },
+    {
+      "key": "intro_heading",
+      "label": "Intro Heading",
+      "type": "text"
+    },
+    {
+      "key": "intro_body_1",
+      "label": "Intro Body 1",
+      "type": "text"
+    },
+    {
+      "key": "intro_body_2",
+      "label": "Intro Body 2",
+      "type": "text"
+    },
+    {
+      "key": "intro_team_link",
+      "label": "Intro Team Link",
+      "type": "text"
+    },
+    {
+      "key": "intro_caption_stars",
+      "label": "Intro Caption Stars",
+      "type": "text"
+    },
+    {
+      "key": "intro_caption_quote",
+      "label": "Intro Caption Quote",
+      "type": "text"
+    },
+    {
+      "key": "intro_caption_name",
+      "label": "Intro Caption Name",
+      "type": "text"
+    },
+    {
+      "key": "services_eyebrow",
+      "label": "Services Eyebrow",
+      "type": "text"
+    },
+    {
+      "key": "services_heading",
+      "label": "Services Heading",
+      "type": "text"
+    },
+    {
+      "key": "services_note",
+      "label": "Services Note",
+      "type": "text"
+    },
+    {
+      "key": "services_cta",
+      "label": "Services Cta",
+      "type": "text"
+    },
+    {
+      "key": "service_buy_index",
+      "label": "Service Buy Index",
+      "type": "text"
+    },
+    {
+      "key": "service_buy_title",
+      "label": "Service Buy Title",
+      "type": "text"
+    },
+    {
+      "key": "service_buy_body",
+      "label": "Service Buy Body",
+      "type": "text"
+    },
+    {
+      "key": "service_sell_index",
+      "label": "Service Sell Index",
+      "type": "text"
+    },
+    {
+      "key": "service_sell_title",
+      "label": "Service Sell Title",
+      "type": "text"
+    },
+    {
+      "key": "service_sell_body",
+      "label": "Service Sell Body",
+      "type": "text"
+    },
+    {
+      "key": "service_rent_index",
+      "label": "Service Rent Index",
+      "type": "text"
+    },
+    {
+      "key": "service_rent_title",
+      "label": "Service Rent Title",
+      "type": "text"
+    },
+    {
+      "key": "service_rent_body",
+      "label": "Service Rent Body",
+      "type": "text"
+    },
+    {
+      "key": "service_valuation_index",
+      "label": "Service Valuation Index",
+      "type": "text"
+    },
+    {
+      "key": "service_valuation_title",
+      "label": "Service Valuation Title",
+      "type": "text"
+    },
+    {
+      "key": "service_valuation_body",
+      "label": "Service Valuation Body",
+      "type": "text"
+    },
+    {
+      "key": "mls_eyebrow",
+      "label": "Mls Eyebrow",
+      "type": "text"
+    },
+    {
+      "key": "mls_heading",
+      "label": "Mls Heading",
+      "type": "text"
+    },
+    {
+      "key": "meet_eyebrow",
+      "label": "Meet Eyebrow",
+      "type": "text"
+    },
+    {
+      "key": "meet_heading",
+      "label": "Meet Heading",
+      "type": "text"
+    },
+    {
+      "key": "meet_body_1",
+      "label": "Meet Body 1",
+      "type": "text"
+    },
+    {
+      "key": "meet_body_2",
+      "label": "Meet Body 2",
+      "type": "text"
+    },
+    {
+      "key": "meet_cta",
+      "label": "Meet Cta",
+      "type": "text"
+    },
+    {
+      "key": "reviews_eyebrow",
+      "label": "Reviews Eyebrow",
+      "type": "text"
+    },
+    {
+      "key": "reviews_heading",
+      "label": "Reviews Heading",
+      "type": "text"
+    },
+    {
+      "key": "review_1_quote",
+      "label": "Review 1 Quote",
+      "type": "text"
+    },
+    {
+      "key": "review_1_name",
+      "label": "Review 1 Name",
+      "type": "text"
+    },
+    {
+      "key": "review_src_label",
+      "label": "Review Src Label",
+      "type": "text"
+    },
+    {
+      "key": "review_2_quote",
+      "label": "Review 2 Quote",
+      "type": "text"
+    },
+    {
+      "key": "review_2_name",
+      "label": "Review 2 Name",
+      "type": "text"
+    },
+    {
+      "key": "review_3_quote",
+      "label": "Review 3 Quote",
+      "type": "text"
+    },
+    {
+      "key": "review_3_name",
+      "label": "Review 3 Name",
+      "type": "text"
+    },
+    {
+      "key": "review_4_quote",
+      "label": "Review 4 Quote",
+      "type": "text"
+    },
+    {
+      "key": "review_4_name",
+      "label": "Review 4 Name",
+      "type": "text"
+    },
+    {
+      "key": "review_5_quote",
+      "label": "Review 5 Quote",
+      "type": "text"
+    },
+    {
+      "key": "review_5_name",
+      "label": "Review 5 Name",
+      "type": "text"
+    },
+    {
+      "key": "review_6_quote",
+      "label": "Review 6 Quote",
+      "type": "text"
+    },
+    {
+      "key": "review_6_name",
+      "label": "Review 6 Name",
+      "type": "text"
+    },
+    {
+      "key": "reviews_all_link",
+      "label": "Reviews All Link",
+      "type": "text"
+    },
+    {
+      "key": "cta_title",
+      "label": "Cta Title",
+      "type": "text"
+    },
+    {
+      "key": "cta_sub",
+      "label": "Cta Sub",
+      "type": "text"
+    },
+    {
+      "key": "cta_email_label",
+      "label": "Cta Email Label",
+      "type": "text"
+    },
+    {
+      "key": "intro_office_photo",
+      "label": "Intro Office Photo",
+      "type": "image"
+    },
+    {
+      "key": "founder_photo",
+      "label": "Founder Photo",
+      "type": "image"
+    },
+    {
+      "key": "hero_slide_1",
+      "label": "Hero Slide 1",
+      "type": "image"
+    },
+    {
+      "key": "hero_slide_2",
+      "label": "Hero Slide 2",
+      "type": "image"
+    },
+    {
+      "key": "hero_slide_3",
+      "label": "Hero Slide 3",
+      "type": "image"
+    },
+    {
+      "key": "hero_slide_4",
+      "label": "Hero Slide 4",
+      "type": "image"
+    }
+  ],
+  "team": [
+    {
+      "key": "hero_eyebrow",
+      "label": "Hero Eyebrow",
+      "type": "text"
+    },
+    {
+      "key": "hero_title",
+      "label": "Hero Title",
+      "type": "text"
+    },
+    {
+      "key": "hero_subtitle",
+      "label": "Hero Subtitle",
+      "type": "text"
+    },
+    {
+      "key": "hero_stat_1_num",
+      "label": "Hero Stat 1 Num",
+      "type": "text"
+    },
+    {
+      "key": "hero_stat_1_label",
+      "label": "Hero Stat 1 Label",
+      "type": "text"
+    },
+    {
+      "key": "hero_stat_2_num",
+      "label": "Hero Stat 2 Num",
+      "type": "text"
+    },
+    {
+      "key": "hero_stat_2_label",
+      "label": "Hero Stat 2 Label",
+      "type": "text"
+    },
+    {
+      "key": "hero_stat_3_num",
+      "label": "Hero Stat 3 Num",
+      "type": "text"
+    },
+    {
+      "key": "hero_stat_3_label",
+      "label": "Hero Stat 3 Label",
+      "type": "text"
+    },
+    {
+      "key": "hero_stat_4_num",
+      "label": "Hero Stat 4 Num",
+      "type": "text"
+    },
+    {
+      "key": "hero_stat_4_label",
+      "label": "Hero Stat 4 Label",
+      "type": "text"
+    },
+    {
+      "key": "founder_badge_name",
+      "label": "Founder Badge Name",
+      "type": "text"
+    },
+    {
+      "key": "founder_badge_title",
+      "label": "Founder Badge Title",
+      "type": "text"
+    },
+    {
+      "key": "founder_quote_text",
+      "label": "Founder Quote Text",
+      "type": "text"
+    },
+    {
+      "key": "founder_quote_author",
+      "label": "Founder Quote Author",
+      "type": "text"
+    },
+    {
+      "key": "founder_eyebrow",
+      "label": "Founder Eyebrow",
+      "type": "text"
+    },
+    {
+      "key": "founder_name",
+      "label": "Founder Name",
+      "type": "text"
+    },
+    {
+      "key": "founder_bio",
+      "label": "Founder Bio",
+      "type": "text"
+    },
+    {
+      "key": "founder_contact_phone_label",
+      "label": "Founder Contact Phone Label",
+      "type": "text"
+    },
+    {
+      "key": "founder_contact_phone",
+      "label": "Founder Contact Phone",
+      "type": "text"
+    },
+    {
+      "key": "founder_contact_email_label",
+      "label": "Founder Contact Email Label",
+      "type": "text"
+    },
+    {
+      "key": "founder_contact_email",
+      "label": "Founder Contact Email",
+      "type": "text"
+    },
+    {
+      "key": "roster_eyebrow",
+      "label": "Roster Eyebrow",
+      "type": "text"
+    },
+    {
+      "key": "roster_title",
+      "label": "Roster Title",
+      "type": "text"
+    },
+    {
+      "key": "roster_lede",
+      "label": "Roster Lede",
+      "type": "text"
+    },
+    {
+      "key": "roster_1_role",
+      "label": "Roster 1 Role",
+      "type": "text"
+    },
+    {
+      "key": "roster_1_name",
+      "label": "Roster 1 Name",
+      "type": "text"
+    },
+    {
+      "key": "roster_1_phone",
+      "label": "Roster 1 Phone",
+      "type": "text"
+    },
+    {
+      "key": "roster_1_email",
+      "label": "Roster 1 Email",
+      "type": "text"
+    },
+    {
+      "key": "roster_2_role",
+      "label": "Roster 2 Role",
+      "type": "text"
+    },
+    {
+      "key": "roster_2_name",
+      "label": "Roster 2 Name",
+      "type": "text"
+    },
+    {
+      "key": "roster_2_phone",
+      "label": "Roster 2 Phone",
+      "type": "text"
+    },
+    {
+      "key": "roster_2_email",
+      "label": "Roster 2 Email",
+      "type": "text"
+    },
+    {
+      "key": "roster_3_role",
+      "label": "Roster 3 Role",
+      "type": "text"
+    },
+    {
+      "key": "roster_3_name",
+      "label": "Roster 3 Name",
+      "type": "text"
+    },
+    {
+      "key": "roster_3_phone",
+      "label": "Roster 3 Phone",
+      "type": "text"
+    },
+    {
+      "key": "roster_3_email",
+      "label": "Roster 3 Email",
+      "type": "text"
+    },
+    {
+      "key": "roster_4_role",
+      "label": "Roster 4 Role",
+      "type": "text"
+    },
+    {
+      "key": "roster_4_name",
+      "label": "Roster 4 Name",
+      "type": "text"
+    },
+    {
+      "key": "roster_4_phone",
+      "label": "Roster 4 Phone",
+      "type": "text"
+    },
+    {
+      "key": "roster_4_email",
+      "label": "Roster 4 Email",
+      "type": "text"
+    },
+    {
+      "key": "roster_5_role",
+      "label": "Roster 5 Role",
+      "type": "text"
+    },
+    {
+      "key": "roster_5_name",
+      "label": "Roster 5 Name",
+      "type": "text"
+    },
+    {
+      "key": "roster_5_phone",
+      "label": "Roster 5 Phone",
+      "type": "text"
+    },
+    {
+      "key": "roster_5_email",
+      "label": "Roster 5 Email",
+      "type": "text"
+    },
+    {
+      "key": "roster_6_role",
+      "label": "Roster 6 Role",
+      "type": "text"
+    },
+    {
+      "key": "roster_6_name",
+      "label": "Roster 6 Name",
+      "type": "text"
+    },
+    {
+      "key": "roster_6_phone",
+      "label": "Roster 6 Phone",
+      "type": "text"
+    },
+    {
+      "key": "roster_6_email",
+      "label": "Roster 6 Email",
+      "type": "text"
+    },
+    {
+      "key": "roster_7_role",
+      "label": "Roster 7 Role",
+      "type": "text"
+    },
+    {
+      "key": "roster_7_name",
+      "label": "Roster 7 Name",
+      "type": "text"
+    },
+    {
+      "key": "roster_7_phone",
+      "label": "Roster 7 Phone",
+      "type": "text"
+    },
+    {
+      "key": "roster_7_email",
+      "label": "Roster 7 Email",
+      "type": "text"
+    },
+    {
+      "key": "values_eyebrow",
+      "label": "Values Eyebrow",
+      "type": "text"
+    },
+    {
+      "key": "values_title",
+      "label": "Values Title",
+      "type": "text"
+    },
+    {
+      "key": "value_1_title",
+      "label": "Value 1 Title",
+      "type": "text"
+    },
+    {
+      "key": "value_1_desc",
+      "label": "Value 1 Desc",
+      "type": "text"
+    },
+    {
+      "key": "value_2_title",
+      "label": "Value 2 Title",
+      "type": "text"
+    },
+    {
+      "key": "value_2_desc",
+      "label": "Value 2 Desc",
+      "type": "text"
+    },
+    {
+      "key": "value_3_title",
+      "label": "Value 3 Title",
+      "type": "text"
+    },
+    {
+      "key": "value_3_desc",
+      "label": "Value 3 Desc",
+      "type": "text"
+    },
+    {
+      "key": "value_4_title",
+      "label": "Value 4 Title",
+      "type": "text"
+    },
+    {
+      "key": "value_4_desc",
+      "label": "Value 4 Desc",
+      "type": "text"
+    },
+    {
+      "key": "voices_eyebrow",
+      "label": "Voices Eyebrow",
+      "type": "text"
+    },
+    {
+      "key": "voices_title",
+      "label": "Voices Title",
+      "type": "text"
+    },
+    {
+      "key": "voice_1_text",
+      "label": "Voice 1 Text",
+      "type": "text"
+    },
+    {
+      "key": "voice_1_name",
+      "label": "Voice 1 Name",
+      "type": "text"
+    },
+    {
+      "key": "voice_1_meta",
+      "label": "Voice 1 Meta",
+      "type": "text"
+    },
+    {
+      "key": "voice_2_text",
+      "label": "Voice 2 Text",
+      "type": "text"
+    },
+    {
+      "key": "voice_2_name",
+      "label": "Voice 2 Name",
+      "type": "text"
+    },
+    {
+      "key": "voice_2_meta",
+      "label": "Voice 2 Meta",
+      "type": "text"
+    },
+    {
+      "key": "voice_3_text",
+      "label": "Voice 3 Text",
+      "type": "text"
+    },
+    {
+      "key": "voice_3_name",
+      "label": "Voice 3 Name",
+      "type": "text"
+    },
+    {
+      "key": "voice_3_meta",
+      "label": "Voice 3 Meta",
+      "type": "text"
+    },
+    {
+      "key": "voice_4_text",
+      "label": "Voice 4 Text",
+      "type": "text"
+    },
+    {
+      "key": "voice_4_name",
+      "label": "Voice 4 Name",
+      "type": "text"
+    },
+    {
+      "key": "voice_4_meta",
+      "label": "Voice 4 Meta",
+      "type": "text"
+    },
+    {
+      "key": "voice_5_text",
+      "label": "Voice 5 Text",
+      "type": "text"
+    },
+    {
+      "key": "voice_5_name",
+      "label": "Voice 5 Name",
+      "type": "text"
+    },
+    {
+      "key": "voice_5_meta",
+      "label": "Voice 5 Meta",
+      "type": "text"
+    },
+    {
+      "key": "join_eyebrow",
+      "label": "Join Eyebrow",
+      "type": "text"
+    },
+    {
+      "key": "join_title",
+      "label": "Join Title",
+      "type": "text"
+    },
+    {
+      "key": "join_text",
+      "label": "Join Text",
+      "type": "text"
+    },
+    {
+      "key": "join_cta",
+      "label": "Join Cta",
+      "type": "text"
+    },
+    {
+      "key": "join_stat_1_num",
+      "label": "Join Stat 1 Num",
+      "type": "text"
+    },
+    {
+      "key": "join_stat_1_label",
+      "label": "Join Stat 1 Label",
+      "type": "text"
+    },
+    {
+      "key": "join_stat_2_num",
+      "label": "Join Stat 2 Num",
+      "type": "text"
+    },
+    {
+      "key": "join_stat_2_label",
+      "label": "Join Stat 2 Label",
+      "type": "text"
+    },
+    {
+      "key": "join_stat_3_num",
+      "label": "Join Stat 3 Num",
+      "type": "text"
+    },
+    {
+      "key": "join_stat_3_label",
+      "label": "Join Stat 3 Label",
+      "type": "text"
+    },
+    {
+      "key": "cta_title",
+      "label": "Cta Title",
+      "type": "text"
+    },
+    {
+      "key": "cta_subtitle",
+      "label": "Cta Subtitle",
+      "type": "text"
+    },
+    {
+      "key": "cta_phone_button",
+      "label": "Cta Phone Button",
+      "type": "text"
+    },
+    {
+      "key": "cta_message_button",
+      "label": "Cta Message Button",
+      "type": "text"
+    },
+    {
+      "key": "cta_trust_1",
+      "label": "Cta Trust 1",
+      "type": "text"
+    },
+    {
+      "key": "cta_trust_2",
+      "label": "Cta Trust 2",
+      "type": "text"
+    },
+    {
+      "key": "cta_trust_3",
+      "label": "Cta Trust 3",
+      "type": "text"
+    },
+    {
+      "key": "founder_photo",
+      "label": "Founder Photo",
+      "type": "image"
+    },
+    {
+      "key": "roster_1_photo",
+      "label": "Roster 1 Photo",
+      "type": "image"
+    },
+    {
+      "key": "roster_2_photo",
+      "label": "Roster 2 Photo",
+      "type": "image"
+    },
+    {
+      "key": "roster_3_photo",
+      "label": "Roster 3 Photo",
+      "type": "image"
+    },
+    {
+      "key": "roster_4_photo",
+      "label": "Roster 4 Photo",
+      "type": "image"
+    },
+    {
+      "key": "roster_5_photo",
+      "label": "Roster 5 Photo",
+      "type": "image"
+    },
+    {
+      "key": "roster_6_photo",
+      "label": "Roster 6 Photo",
+      "type": "image"
+    },
+    {
+      "key": "roster_7_photo",
+      "label": "Roster 7 Photo",
+      "type": "image"
+    }
+  ],
+  "services": [
+    {
+      "key": "header_eyebrow",
+      "label": "Header Eyebrow",
+      "type": "text"
+    },
+    {
+      "key": "header_title",
+      "label": "Header Title",
+      "type": "text"
+    },
+    {
+      "key": "header_sub",
+      "label": "Header Sub",
+      "type": "text"
+    },
+    {
+      "key": "cta_title",
+      "label": "Cta Title",
+      "type": "text"
+    },
+    {
+      "key": "cta_sub",
+      "label": "Cta Sub",
+      "type": "text"
+    },
+    {
+      "key": "cta_call_label",
+      "label": "Cta Call Label",
+      "type": "text"
+    },
+    {
+      "key": "cta_email_label",
+      "label": "Cta Email Label",
+      "type": "text"
+    }
+  ],
+  "contact": [
+    {
+      "key": "header_eyebrow",
+      "label": "Header Eyebrow",
+      "type": "text"
+    },
+    {
+      "key": "header_title",
+      "label": "Header Title",
+      "type": "text"
+    },
+    {
+      "key": "header_sub",
+      "label": "Header Sub",
+      "type": "text"
+    },
+    {
+      "key": "intro_heading",
+      "label": "Intro Heading",
+      "type": "text"
+    },
+    {
+      "key": "intro_text",
+      "label": "Intro Text",
+      "type": "text"
+    },
+    {
+      "key": "reviews_link_text",
+      "label": "Reviews Link Text",
+      "type": "text"
+    },
+    {
+      "key": "call_label",
+      "label": "Call Label",
+      "type": "text"
+    },
+    {
+      "key": "call_value",
+      "label": "Call Value",
+      "type": "text"
+    },
+    {
+      "key": "call_note",
+      "label": "Call Note",
+      "type": "text"
+    },
+    {
+      "key": "email_label",
+      "label": "Email Label",
+      "type": "text"
+    },
+    {
+      "key": "email_value",
+      "label": "Email Value",
+      "type": "text"
+    },
+    {
+      "key": "email_note",
+      "label": "Email Note",
+      "type": "text"
+    },
+    {
+      "key": "area_label",
+      "label": "Area Label",
+      "type": "text"
+    },
+    {
+      "key": "area_value",
+      "label": "Area Value",
+      "type": "text"
+    },
+    {
+      "key": "area_note",
+      "label": "Area Note",
+      "type": "text"
+    },
+    {
+      "key": "social_heading",
+      "label": "Social Heading",
+      "type": "text"
+    },
+    {
+      "key": "form_heading",
+      "label": "Form Heading",
+      "type": "text"
+    },
+    {
+      "key": "form_sub",
+      "label": "Form Sub",
+      "type": "text"
+    },
+    {
+      "key": "form_submit_label",
+      "label": "Form Submit Label",
+      "type": "text"
+    },
+    {
+      "key": "form_disclaimer",
+      "label": "Form Disclaimer",
+      "type": "text"
+    },
+    {
+      "key": "faq_eyebrow",
+      "label": "Faq Eyebrow",
+      "type": "text"
+    },
+    {
+      "key": "faq_title",
+      "label": "Faq Title",
+      "type": "text"
+    },
+    {
+      "key": "faq_1_question",
+      "label": "Faq 1 Question",
+      "type": "text"
+    },
+    {
+      "key": "faq_1_answer",
+      "label": "Faq 1 Answer",
+      "type": "text"
+    },
+    {
+      "key": "faq_2_question",
+      "label": "Faq 2 Question",
+      "type": "text"
+    },
+    {
+      "key": "faq_2_answer",
+      "label": "Faq 2 Answer",
+      "type": "text"
+    },
+    {
+      "key": "faq_3_question",
+      "label": "Faq 3 Question",
+      "type": "text"
+    },
+    {
+      "key": "faq_3_answer",
+      "label": "Faq 3 Answer",
+      "type": "text"
+    },
+    {
+      "key": "faq_4_question",
+      "label": "Faq 4 Question",
+      "type": "text"
+    },
+    {
+      "key": "faq_4_answer",
+      "label": "Faq 4 Answer",
+      "type": "text"
+    },
+    {
+      "key": "faq_5_question",
+      "label": "Faq 5 Question",
+      "type": "text"
+    },
+    {
+      "key": "faq_5_answer",
+      "label": "Faq 5 Answer",
+      "type": "text"
+    }
+  ],
+  "privacy": [
+    {
+      "key": "title",
+      "label": "Title",
+      "type": "text"
+    },
+    {
+      "key": "effective_date",
+      "label": "Effective Date",
+      "type": "text"
+    },
+    {
+      "key": "intro_p1",
+      "label": "Intro P1",
+      "type": "text"
+    },
+    {
+      "key": "intro_p2",
+      "label": "Intro P2",
+      "type": "text"
+    },
+    {
+      "key": "section1_heading",
+      "label": "Section1 Heading",
+      "type": "text"
+    },
+    {
+      "key": "section1_p1",
+      "label": "Section1 P1",
+      "type": "text"
+    },
+    {
+      "key": "section1_li1",
+      "label": "Section1 Li1",
+      "type": "text"
+    },
+    {
+      "key": "section1_li2",
+      "label": "Section1 Li2",
+      "type": "text"
+    },
+    {
+      "key": "section1_li3",
+      "label": "Section1 Li3",
+      "type": "text"
+    },
+    {
+      "key": "section1_p2",
+      "label": "Section1 P2",
+      "type": "text"
+    },
+    {
+      "key": "section2_heading",
+      "label": "Section2 Heading",
+      "type": "text"
+    },
+    {
+      "key": "section2_p1",
+      "label": "Section2 P1",
+      "type": "text"
+    },
+    {
+      "key": "section2_li1",
+      "label": "Section2 Li1",
+      "type": "text"
+    },
+    {
+      "key": "section2_li2",
+      "label": "Section2 Li2",
+      "type": "text"
+    },
+    {
+      "key": "section2_li3",
+      "label": "Section2 Li3",
+      "type": "text"
+    },
+    {
+      "key": "section2_p2",
+      "label": "Section2 P2",
+      "type": "text"
+    },
+    {
+      "key": "section3_heading",
+      "label": "Section3 Heading",
+      "type": "text"
+    },
+    {
+      "key": "section3_p1",
+      "label": "Section3 P1",
+      "type": "text"
+    },
+    {
+      "key": "section3_li1",
+      "label": "Section3 Li1",
+      "type": "text"
+    },
+    {
+      "key": "section3_li2",
+      "label": "Section3 Li2",
+      "type": "text"
+    },
+    {
+      "key": "section3_p2",
+      "label": "Section3 P2",
+      "type": "text"
+    },
+    {
+      "key": "section4_heading",
+      "label": "Section4 Heading",
+      "type": "text"
+    },
+    {
+      "key": "section4_p1",
+      "label": "Section4 P1",
+      "type": "text"
+    },
+    {
+      "key": "section4_li1",
+      "label": "Section4 Li1",
+      "type": "text"
+    },
+    {
+      "key": "section4_li2",
+      "label": "Section4 Li2",
+      "type": "text"
+    },
+    {
+      "key": "section4_li3",
+      "label": "Section4 Li3",
+      "type": "text"
+    },
+    {
+      "key": "section5_heading",
+      "label": "Section5 Heading",
+      "type": "text"
+    },
+    {
+      "key": "section5_p1",
+      "label": "Section5 P1",
+      "type": "text"
+    },
+    {
+      "key": "section6_heading",
+      "label": "Section6 Heading",
+      "type": "text"
+    },
+    {
+      "key": "section6_p1",
+      "label": "Section6 P1",
+      "type": "text"
+    },
+    {
+      "key": "section6_li1",
+      "label": "Section6 Li1",
+      "type": "text"
+    },
+    {
+      "key": "section6_li2",
+      "label": "Section6 Li2",
+      "type": "text"
+    },
+    {
+      "key": "section6_li3",
+      "label": "Section6 Li3",
+      "type": "text"
+    },
+    {
+      "key": "section6_li4",
+      "label": "Section6 Li4",
+      "type": "text"
+    },
+    {
+      "key": "section6_p2",
+      "label": "Section6 P2",
+      "type": "text"
+    },
+    {
+      "key": "section7_heading",
+      "label": "Section7 Heading",
+      "type": "text"
+    },
+    {
+      "key": "section7_p1",
+      "label": "Section7 P1",
+      "type": "text"
+    },
+    {
+      "key": "section8_heading",
+      "label": "Section8 Heading",
+      "type": "text"
+    },
+    {
+      "key": "section8_p1",
+      "label": "Section8 P1",
+      "type": "text"
+    },
+    {
+      "key": "section9_heading",
+      "label": "Section9 Heading",
+      "type": "text"
+    },
+    {
+      "key": "section9_p1",
+      "label": "Section9 P1",
+      "type": "text"
+    },
+    {
+      "key": "section9_li1",
+      "label": "Section9 Li1",
+      "type": "text"
+    },
+    {
+      "key": "section9_li2",
+      "label": "Section9 Li2",
+      "type": "text"
+    },
+    {
+      "key": "section9_li3",
+      "label": "Section9 Li3",
+      "type": "text"
+    },
+    {
+      "key": "copyright_line",
+      "label": "Copyright Line",
+      "type": "text"
+    }
+  ]
+}
