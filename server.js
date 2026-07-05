@@ -54,6 +54,20 @@ app.use('/api', authRoutes);
 app.use('/api', listingsRoutes);
 app.use('/api', contentRoutes);
 
+// API errors (bad uploads, malformed JSON, unexpected failures) respond as
+// JSON so the admin/listings fetch handlers can show their friendly message
+// instead of receiving an HTML stack trace.
+app.use('/api', (err, req, res, next) => {
+  if (res.headersSent) return next(err);
+  const status = err.status || (err.code === 'LIMIT_FILE_SIZE' ? 413 : 500);
+  const message =
+    err.code === 'LIMIT_FILE_SIZE'
+      ? 'Each photo must be 5MB or smaller'
+      : err.message || 'Something went wrong';
+  console.error('API error:', err);
+  res.status(status).json({ error: message });
+});
+
 app.get(/^\/admin(\.html)?$/, (req, res) => {
   res.setHeader('X-Robots-Tag', 'noindex, nofollow');
   res.sendFile(path.join(__dirname, 'admin.html'));

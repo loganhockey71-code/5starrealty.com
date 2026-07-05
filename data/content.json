@@ -1,7 +1,7 @@
 {
   "properties": {
     "header_eyebrow": "Curated by Our Team",
-    "header_title": "Our current<br><span class=\"accent\">properties.</span>",
+    "header_title": "Our<br><span class=\"accent\">listings.</span>",
     "header_sub": "A hand-picked selection of homes our team is actively representing. Looking for something more specific? <a href=\"services.html\" class=\"text-link\">Search the full MLS →</a>",
     "available_heading": "Available now",
     "cta_title": "Don't see what you're looking for?",
@@ -79,7 +79,7 @@
   },
   "team": {
     "hero_eyebrow": "Meet the Team",
-    "hero_title": "The People Behind<br>Your <span class=\"accent\">Five-Star</span> Experience.",
+    "hero_title": "The People Behind<br>Your <span class=\"accent\">5-Star</span> Experience.",
     "hero_subtitle": "Our Broker has 20+ years of experience and our team of Realtors is dedicated to serving clients across South Florida.",
     "hero_stat_1_num": "4.7★",
     "hero_stat_1_label": "Google Rating",

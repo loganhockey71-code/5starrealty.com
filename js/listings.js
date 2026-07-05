@@ -29,6 +29,14 @@
     return '$' + num.toLocaleString('en-US');
   }
 
+  function esc(str) {
+    return String(str == null ? '' : str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
   function placeholderPhoto() {
     return 'https://i.imgur.com/RJV9XBt.jpg';
   }
@@ -41,18 +49,18 @@
     card.dataset.category = status;
     card.innerHTML = `
       <div class="listing-photo">
-        <img src="${photo}" alt="${listing.address}" loading="lazy">
-        <span class="listing-tag tag-${status}">${listing.status}</span>
+        <img src="${esc(photo)}" alt="${esc(listing.address)}" loading="lazy">
+        <span class="listing-tag tag-${esc(status)}">${esc(listing.status || 'Active')}</span>
         ${isOwner ? '<button type="button" class="owner-remove-btn">Remove</button>' : ''}
       </div>
       <div class="listing-info">
         <div class="listing-top">
-          <h3>${listing.address}</h3>
-          <span class="listing-price">${formatPrice(listing.price)}</span>
+          <h3>${esc(listing.address)}</h3>
+          <span class="listing-price">${esc(formatPrice(listing.price))}</span>
         </div>
-        <p class="listing-place">${listing.city || ''}</p>
-        <p class="listing-desc">${listing.description || ''}</p>
-        <p class="listing-specs">${listing.beds} bd &nbsp;·&nbsp; ${listing.baths} ba &nbsp;·&nbsp; ${Number(listing.sqft).toLocaleString('en-US')} sqft</p>
+        <p class="listing-place">${esc(listing.city)}</p>
+        <p class="listing-desc">${esc(listing.description)}</p>
+        <p class="listing-specs">${esc(listing.beds)} bd &nbsp;·&nbsp; ${esc(listing.baths)} ba &nbsp;·&nbsp; ${Number(listing.sqft).toLocaleString('en-US')} sqft</p>
         <span class="listing-cta">View details →</span>
       </div>
     `;
@@ -133,13 +141,15 @@
     if (e.key === 'Escape') closeModal();
   });
   modalPrev.addEventListener('click', () => {
-    if (!activeListing || !activeListing.photos.length) return;
-    activePhotoIndex = (activePhotoIndex - 1 + activeListing.photos.length) % activeListing.photos.length;
+    const photos = (activeListing && activeListing.photos) || [];
+    if (!photos.length) return;
+    activePhotoIndex = (activePhotoIndex - 1 + photos.length) % photos.length;
     updateModalPhoto();
   });
   modalNext.addEventListener('click', () => {
-    if (!activeListing || !activeListing.photos.length) return;
-    activePhotoIndex = (activePhotoIndex + 1) % activeListing.photos.length;
+    const photos = (activeListing && activeListing.photos) || [];
+    if (!photos.length) return;
+    activePhotoIndex = (activePhotoIndex + 1) % photos.length;
     updateModalPhoto();
   });
 

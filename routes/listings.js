@@ -47,7 +47,7 @@ router.get('/listings', (req, res) => {
   let listings = db.readAll();
   if (req.query.status) {
     listings = listings.filter(
-      (l) => l.status.toLowerCase() === String(req.query.status).toLowerCase()
+      (l) => String(l.status || '').toLowerCase() === String(req.query.status).toLowerCase()
     );
   }
   res.json(listings);

@@ -63,9 +63,10 @@ window.handleFormSubmit = function (e) {
   e.preventDefault();
   const f = e.target;
   const subject = `5 Star Realty inquiry: ${f.interest ? f.interest.value : 'General'}`;
-  const body =
-    `Name: ${f.name.value}%0D%0APhone: ${f.phone ? f.phone.value : ''}%0D%0AEmail: ${f.email.value}` +
-    `%0D%0A%0D%0A${encodeURIComponent(f.message ? f.message.value : '')}`;
+  const body = encodeURIComponent(
+    `Name: ${f.name.value}\r\nPhone: ${f.phone ? f.phone.value : ''}\r\nEmail: ${f.email.value}` +
+    `\r\n\r\n${f.message ? f.message.value : ''}`
+  );
   window.location.href = `mailto:batelb55@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
   const btn = f.querySelector('.form-submit');
   if (btn) { const t = btn.textContent; btn.textContent = 'Opening your email…'; setTimeout(() => { btn.textContent = t; f.reset(); }, 2500); }

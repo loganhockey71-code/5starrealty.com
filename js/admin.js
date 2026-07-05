@@ -89,10 +89,10 @@
       const thumb = (listing.photos && listing.photos[0]) || 'https://i.imgur.com/RJV9XBt.jpg';
       const statusClass = (listing.status || 'active').toLowerCase();
       tr.innerHTML = `
-        <td><img class="admin-thumb" src="${thumb}" alt=""></td>
-        <td>${listing.address}</td>
-        <td>${formatPrice(listing.price)}</td>
-        <td><span class="admin-status-pill ${statusClass}">${listing.status}</span></td>
+        <td><img class="admin-thumb" src="${escapeAttr(thumb)}" alt=""></td>
+        <td>${escapeHtml(listing.address)}</td>
+        <td>${escapeHtml(formatPrice(listing.price))}</td>
+        <td><span class="admin-status-pill ${escapeAttr(statusClass)}">${escapeHtml(listing.status || 'Active')}</span></td>
         <td>
           <div class="admin-row-actions">
             <button data-action="edit">Edit</button>
@@ -200,7 +200,7 @@
   const PAGE_LABELS = {
     index: 'Home',
     team: 'Meet the Team',
-    properties: 'Properties',
+    properties: 'Our Listings',
     services: 'Search MLS',
     contact: 'Contact',
     privacy: 'Privacy Policy',
