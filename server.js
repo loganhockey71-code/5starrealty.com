@@ -77,4 +77,14 @@ app.use(express.static(path.join(__dirname, '.'), { extensions: ['html'] }));
 
 app.listen(PORT, () => {
   console.log(`5 Star Realty server running on http://localhost:${PORT}`);
+  // Temporary boot-time diagnostic for admin login setup — reports only
+  // lengths/shape, never actual secret values. Remove once login is confirmed working.
+  const u = process.env.ADMIN_USERNAME || '';
+  const h = process.env.ADMIN_PASSWORD_HASH || '';
+  console.log(
+    `[auth-check] ADMIN_USERNAME set=${Boolean(u)} length=${u.length} trimmedMatches=${u === u.trim()}`
+  );
+  console.log(
+    `[auth-check] ADMIN_PASSWORD_HASH set=${Boolean(h)} length=${h.length} looksLikeBcrypt=${/^\$2[aby]\$\d{2}\$.{53}$/.test(h)}`
+  );
 });
