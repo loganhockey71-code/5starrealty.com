@@ -31,6 +31,12 @@ seedDataDir();
 const app = express();
 const PORT = process.env.PORT || 8000;
 
+// Render terminates HTTPS at its edge and forwards to this app over plain
+// HTTP, so Express must trust the proxy's X-Forwarded-Proto header to know
+// the original request was secure — otherwise express-session silently
+// refuses to set cookies flagged `secure: true` in production.
+app.set('trust proxy', 1);
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
