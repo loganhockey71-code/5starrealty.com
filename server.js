@@ -10,6 +10,7 @@ const { DATA_DIR, UPLOADS_DIR } = require('./lib/paths');
 const authRoutes = require('./routes/auth');
 const listingsRoutes = require('./routes/listings');
 const contentRoutes = require('./routes/content');
+const publishRoutes = require('./routes/publish');
 
 // Seed DATA_DIR from the repo's bundled defaults on first boot against a
 // fresh (empty) persistent disk, without ever overwriting existing data.
@@ -25,6 +26,20 @@ function seedDataDir() {
       fs.copyFileSync(source, target);
     }
   }
+
+  // Seed the admin's draft copies from whatever ended up published (bundled
+  // defaults on first boot, or already-published data on redeploys) so the
+  // admin panel starts out matching the live site.
+  for (const file of ['content.json', 'listings.json']) {
+    const draftTarget = path.join(DATA_DIR, file.replace('.json', '.draft.json'));
+    const publishedSource = path.join(DATA_DIR, file);
+    if (!fs.existsSync(draftTarget) && fs.existsSync(publishedSource)) {
+      fs.copyFileSync(publishedSource, draftTarget);
+    }
+  }
+
+  const historyFile = path.join(DATA_DIR, 'history.json');
+  if (!fs.existsSync(historyFile)) fs.writeFileSync(historyFile, '[]');
 }
 seedDataDir();
 
@@ -59,6 +74,7 @@ app.use('/uploads', express.static(UPLOADS_DIR));
 app.use('/api', authRoutes);
 app.use('/api', listingsRoutes);
 app.use('/api', contentRoutes);
+app.use('/api', publishRoutes);
 
 // API errors (bad uploads, malformed JSON, unexpected failures) respond as
 // JSON so the admin/listings fetch handlers can show their friendly message

@@ -6,6 +6,14 @@
   const logoutBtn = document.getElementById('logoutBtn');
   const addListingBtn = document.getElementById('addListingBtn');
   const tableBody = document.getElementById('listingsTableBody');
+  const publishBtn = document.getElementById('publishBtn');
+
+  const historyOverlay = document.getElementById('historyOverlay');
+  const historyTitle = document.getElementById('historyTitle');
+  const historyList = document.getElementById('historyList');
+  const closeHistoryBtn = document.getElementById('closeHistoryBtn');
+
+  let publishStatus = { pendingPages: [], pendingListingIds: [], pendingListings: false, hasPending: false };
 
   const formOverlay = document.getElementById('formOverlay');
   const listingForm = document.getElementById('listingForm');
@@ -32,7 +40,92 @@
     loginView.classList.add('hidden');
     dashboardView.classList.remove('hidden');
     loadListings();
+    refreshPublishStatus();
   }
+
+  function refreshPublishStatus() {
+    return fetch('/api/admin/publish/status')
+      .then((res) => res.json())
+      .then((status) => {
+        publishStatus = status;
+        const count = status.pendingPages.length + status.pendingListingIds.length + status.deletedListingCount;
+        publishBtn.disabled = !status.hasPending;
+        publishBtn.textContent = status.hasPending ? `Publish to Live Site (${count})` : 'No changes to publish';
+        renderTable();
+        renderPagePicker();
+      });
+  }
+
+  publishBtn.addEventListener('click', () => {
+    const count = publishStatus.pendingPages.length + publishStatus.pendingListingIds.length + publishStatus.deletedListingCount;
+    if (!confirm(`Publish ${count} pending change${count === 1 ? '' : 's'} to 5starrealtyfl.com?`)) return;
+    publishBtn.disabled = true;
+    fetch('/api/admin/publish', { method: 'POST' })
+      .then((res) => {
+        if (!res.ok) throw new Error('Publish failed');
+        return refreshPublishStatus();
+      })
+      .catch(() => {
+        alert('Could not publish. Please try again.');
+        refreshPublishStatus();
+      });
+  });
+
+  function formatTimestamp(iso) {
+    return new Date(iso).toLocaleString('en-US', {
+      dateStyle: 'medium',
+      timeStyle: 'short',
+    });
+  }
+
+  function openHistory(label, fetchUrl, restoreUrl, onRestored) {
+    historyTitle.textContent = `History — ${label}`;
+    historyList.innerHTML = '<p class="admin-history-empty">Loading…</p>';
+    historyOverlay.classList.add('open');
+
+    fetch(fetchUrl)
+      .then((res) => res.json())
+      .then((entries) => {
+        if (!entries.length) {
+          historyList.innerHTML = '<p class="admin-history-empty">No past published versions yet.</p>';
+          return;
+        }
+        historyList.innerHTML = '';
+        entries.forEach((entry) => {
+          const row = document.createElement('div');
+          row.className = 'admin-history-row';
+          row.innerHTML = `<time>${escapeHtml(formatTimestamp(entry.timestamp))}</time>`;
+          const restoreBtn = document.createElement('button');
+          restoreBtn.type = 'button';
+          restoreBtn.textContent = 'Restore';
+          restoreBtn.addEventListener('click', () => {
+            fetch(restoreUrl, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ timestamp: entry.timestamp }),
+            })
+              .then((res) => {
+                if (!res.ok) throw new Error('Restore failed');
+                closeHistory();
+                onRestored();
+                refreshPublishStatus();
+              })
+              .catch(() => alert('Could not restore this version. Please try again.'));
+          });
+          row.appendChild(restoreBtn);
+          historyList.appendChild(row);
+        });
+      });
+  }
+
+  function closeHistory() {
+    historyOverlay.classList.remove('open');
+  }
+
+  closeHistoryBtn.addEventListener('click', closeHistory);
+  historyOverlay.addEventListener('click', (e) => {
+    if (e.target === historyOverlay) closeHistory();
+  });
 
   function checkSession() {
     fetch('/api/session')
@@ -70,7 +163,7 @@
   });
 
   function loadListings() {
-    fetch('/api/listings')
+    fetch('/api/admin/listings')
       .then((res) => res.json())
       .then((data) => {
         listings = data;
@@ -88,19 +181,29 @@
       const tr = document.createElement('tr');
       const thumb = (listing.photos && listing.photos[0]) || 'https://i.imgur.com/RJV9XBt.jpg';
       const statusClass = (listing.status || 'active').toLowerCase();
+      const isPending = publishStatus.pendingListingIds.includes(listing.id);
       tr.innerHTML = `
         <td><img class="admin-thumb" src="${escapeAttr(thumb)}" alt=""></td>
-        <td>${escapeHtml(listing.address)}</td>
+        <td>${escapeHtml(listing.address)}${isPending ? '<span class="admin-unpublished-pill">Unpublished</span>' : ''}</td>
         <td>${escapeHtml(formatPrice(listing.price))}</td>
         <td><span class="admin-status-pill ${escapeAttr(statusClass)}">${escapeHtml(listing.status || 'Active')}</span></td>
         <td>
           <div class="admin-row-actions">
             <button data-action="edit">Edit</button>
+            <button data-action="history">History</button>
             <button data-action="delete" class="danger">Delete</button>
           </div>
         </td>
       `;
       tr.querySelector('[data-action="edit"]').addEventListener('click', () => openForm(listing));
+      tr.querySelector('[data-action="history"]').addEventListener('click', () => {
+        openHistory(
+          listing.address,
+          `/api/admin/history/listings/${listing.id}`,
+          `/api/admin/history/listings/${listing.id}/restore`,
+          loadListings
+        );
+      });
       tr.querySelector('[data-action="delete"]').addEventListener('click', () => deleteListing(listing));
       tableBody.appendChild(tr);
     });
@@ -108,7 +211,9 @@
 
   function deleteListing(listing) {
     if (!confirm(`Delete "${listing.address}"? This cannot be undone.`)) return;
-    fetch(`/api/admin/listings/${listing.id}`, { method: 'DELETE' }).then(loadListings);
+    fetch(`/api/admin/listings/${listing.id}`, { method: 'DELETE' })
+      .then(loadListings)
+      .then(refreshPublishStatus);
   }
 
   function openForm(listing) {
@@ -182,6 +287,7 @@
       .then(() => {
         closeForm();
         loadListings();
+        refreshPublishStatus();
       })
       .catch(() => alert('Could not save this property. Please try again.'));
   });
@@ -195,6 +301,7 @@
   const pageFieldsContainer = document.getElementById('pageFieldsContainer');
   const pageContentForm = document.getElementById('pageContentForm');
   const pageSaveStatus = document.getElementById('pageSaveStatus');
+  const pageHistoryBtn = document.getElementById('pageHistoryBtn');
 
   const PAGE_ORDER = ['index', 'team', 'properties', 'services', 'contact', 'privacy'];
   const PAGE_LABELS = {
@@ -225,7 +332,7 @@
   function loadPagesEditor() {
     Promise.all([
       fetch('/api/admin/content-schema').then((r) => r.json()),
-      fetch('/api/content').then((r) => r.json()),
+      fetch('/api/admin/content').then((r) => r.json()),
     ]).then(([schema, content]) => {
       contentSchema = schema;
       contentData = content;
@@ -236,6 +343,7 @@
   }
 
   function renderPagePicker() {
+    if (!contentSchema) return;
     pagePicker.innerHTML = '';
     const pageIds = PAGE_ORDER.filter((id) => contentSchema[id]);
     Object.keys(contentSchema).forEach((id) => {
@@ -246,6 +354,9 @@
       btn.type = 'button';
       btn.className = 'page-picker-btn' + (pageId === currentPage ? ' active' : '');
       btn.textContent = PAGE_LABELS[pageId] || pageId;
+      if (publishStatus.pendingPages.includes(pageId)) {
+        btn.innerHTML += '<span class="admin-unpublished-pill">•</span>';
+      }
       btn.addEventListener('click', () => {
         currentPage = pageId;
         renderPagePicker();
@@ -322,11 +433,28 @@
         contentData[currentPage] = data.content;
         pageSaveStatus.textContent = 'Saved!';
         renderPageForm(currentPage);
+        refreshPublishStatus();
         setTimeout(() => { pageSaveStatus.textContent = ''; }, 2000);
       })
       .catch(() => {
         pageSaveStatus.textContent = 'Could not save. Please try again.';
       });
+  });
+
+  pageHistoryBtn.addEventListener('click', () => {
+    openHistory(
+      PAGE_LABELS[currentPage] || currentPage,
+      `/api/admin/history/content/${currentPage}`,
+      `/api/admin/history/content/${currentPage}/restore`,
+      () => {
+        fetch('/api/admin/content')
+          .then((r) => r.json())
+          .then((content) => {
+            contentData = content;
+            renderPageForm(currentPage);
+          });
+      }
+    );
   });
 
   checkSession();

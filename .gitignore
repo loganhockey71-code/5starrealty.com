@@ -5,3 +5,9 @@ uploads/*
 !uploads/content/
 uploads/content/*
 !uploads/content/.gitkeep
+
+# Generated admin draft/history state (data/content.json and
+# data/listings.json stay tracked as the bundled seed defaults).
+data/content.draft.json
+data/listings.draft.json
+data/history.json
