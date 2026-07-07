@@ -98,7 +98,6 @@
 .admin-existing-photos { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
 .admin-existing-photo { position: relative; }
 .admin-existing-photo img { width: 70px; height: 52px; object-fit: cover; border-radius: 4px; }
-.admin-existing-photo video { width: 140px; height: 90px; object-fit: cover; border-radius: 4px; }
 .admin-existing-photo button {
   position: absolute; top: -6px; right: -6px; width: 20px; height: 20px; border-radius: 50%;
   background: #c0392b; color: #fff; border: none; font-size: 0.7rem; cursor: pointer; line-height: 1;
@@ -292,16 +291,12 @@
         <div class="admin-existing-photos" id="existingPhotos"></div>
       </div>
       <div class="admin-field">
-        <label for="photos">Add Photos (up to 50)</label>
+        <label for="photos">Add Photos (up to 50, first photo is the cover)</label>
         <input type="file" id="photos" name="photos" accept="image/*" multiple>
       </div>
-      <div class="admin-field" id="existingVideoField" style="display:none;">
-        <label>Existing Video (click × to remove)</label>
-        <div class="admin-existing-photos" id="existingVideo"></div>
-      </div>
       <div class="admin-field">
-        <label for="video">Add Video (1 max)</label>
-        <input type="file" id="video" name="video" accept="video/*">
+        <label for="photosFolder">Or Upload a Folder of Photos</label>
+        <input type="file" id="photosFolder" name="photos" accept="image/*" multiple webkitdirectory>
       </div>
       <div class="admin-form-actions">
         <button type="button" class="admin-btn-secondary" id="cancelFormBtn">Cancel</button>

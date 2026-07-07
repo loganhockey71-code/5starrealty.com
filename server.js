@@ -81,11 +81,11 @@ app.use('/api', publishRoutes);
 // instead of receiving an HTML stack trace.
 app.use('/api', (err, req, res, next) => {
   if (res.headersSent) return next(err);
-  const status = err.status || (err.code === 'LIMIT_FILE_SIZE' ? 413 : 500);
-  const message =
-    err.code === 'LIMIT_FILE_SIZE'
-      ? 'Each file must be 200MB or smaller'
-      : err.message || 'Something went wrong';
+  const isUploadLimit = err.code === 'LIMIT_FILE_SIZE' || err.code === 'LIMIT_UNEXPECTED_FILE';
+  const status = err.status || (isUploadLimit ? 413 : 500);
+  let message = err.message || 'Something went wrong';
+  if (err.code === 'LIMIT_FILE_SIZE') message = 'Each photo must be 5MB or smaller';
+  if (err.code === 'LIMIT_UNEXPECTED_FILE') message = 'You can upload up to 50 photos per listing';
   console.error('API error:', err);
   res.status(status).json({ error: message });
 });

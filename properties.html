@@ -142,10 +142,11 @@
     <button class="listing-modal-close" id="listingModalClose" aria-label="Close">&times;</button>
     <div class="listing-modal-gallery">
       <img id="listingModalImg" src="" alt="">
-      <video id="listingModalVideo" controls></video>
       <button class="listing-modal-nav prev" id="listingModalPrev" aria-label="Previous photo">&#8249;</button>
       <button class="listing-modal-nav next" id="listingModalNext" aria-label="Next photo">&#8250;</button>
+      <span class="listing-modal-count" id="listingModalCount"></span>
     </div>
+    <div class="listing-modal-thumbs" id="listingModalThumbs"></div>
     <div class="listing-modal-body">
       <div class="listing-top">
         <h3 id="listingModalTitle"></h3>
@@ -262,12 +263,12 @@
         <textarea id="ownerDescription" name="description"></textarea>
       </div>
       <div class="owner-field">
-        <label for="ownerPhotos">Photos (up to 50)</label>
+        <label for="ownerPhotos">Photos (up to 50, first photo is the cover)</label>
         <input type="file" id="ownerPhotos" name="photos" accept="image/*" multiple>
       </div>
       <div class="owner-field">
-        <label for="ownerVideo">Video (1 max)</label>
-        <input type="file" id="ownerVideo" name="video" accept="video/*">
+        <label for="ownerPhotosFolder">Or Upload a Folder of Photos</label>
+        <input type="file" id="ownerPhotosFolder" name="photos" accept="image/*" multiple webkitdirectory>
       </div>
       <div class="owner-form-actions">
         <button type="button" class="owner-cancel-btn" id="ownerCancelFormBtn">Cancel</button>

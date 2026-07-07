@@ -4,9 +4,10 @@
 
   const modal = document.getElementById('listingModal');
   const modalImg = document.getElementById('listingModalImg');
-  const modalVideo = document.getElementById('listingModalVideo');
   const modalPrev = document.getElementById('listingModalPrev');
   const modalNext = document.getElementById('listingModalNext');
+  const modalCount = document.getElementById('listingModalCount');
+  const modalThumbs = document.getElementById('listingModalThumbs');
   const modalTitle = document.getElementById('listingModalTitle');
   const modalPrice = document.getElementById('listingModalPrice');
   const modalPlace = document.getElementById('listingModalPlace');
@@ -115,45 +116,53 @@
     modalPlace.textContent = listing.city || '';
     modalSpecs.textContent = `${listing.beds} bd · ${listing.baths} ba · ${Number(listing.sqft).toLocaleString('en-US')} sqft`;
     modalDesc.textContent = listing.description || '';
+    renderThumbs();
     updateModalPhoto();
     modal.classList.add('open');
   }
 
-  function slideCount() {
+  function renderThumbs() {
     const photos = (activeListing && activeListing.photos) || [];
-    const hasVideo = Boolean(activeListing && activeListing.video);
-    return photos.length + (hasVideo ? 1 : 0);
+    modalThumbs.innerHTML = '';
+    if (photos.length < 2) {
+      modalThumbs.style.display = 'none';
+      return;
+    }
+    modalThumbs.style.display = '';
+    photos.forEach((url, i) => {
+      const thumb = document.createElement('img');
+      thumb.src = url;
+      thumb.alt = `Photo ${i + 1}`;
+      thumb.loading = 'lazy';
+      if (i === activePhotoIndex) thumb.classList.add('active');
+      thumb.addEventListener('click', () => {
+        activePhotoIndex = i;
+        updateModalPhoto();
+      });
+      modalThumbs.appendChild(thumb);
+    });
   }
 
   function updateModalPhoto() {
     const photos = (activeListing && activeListing.photos) || [];
-    const hasVideo = Boolean(activeListing && activeListing.video);
-    const onVideoSlide = hasVideo && activePhotoIndex === photos.length;
+    const photo = photos.length ? photos[activePhotoIndex] : placeholderPhoto();
+    modalImg.src = photo;
+    modalImg.alt = activeListing ? activeListing.address : '';
 
-    if (onVideoSlide) {
-      modalVideo.src = activeListing.video;
-      modalVideo.classList.add('active');
-      modalImg.classList.add('hidden-slide');
-    } else {
-      const photo = photos.length ? photos[activePhotoIndex] : placeholderPhoto();
-      modalImg.src = photo;
-      modalImg.alt = activeListing ? activeListing.address : '';
-      modalImg.classList.remove('hidden-slide');
-      modalVideo.classList.remove('active');
-      modalVideo.pause();
-      modalVideo.removeAttribute('src');
-      modalVideo.load();
-    }
-
-    const hasMultiple = slideCount() > 1;
+    const hasMultiple = photos.length > 1;
     modalPrev.style.display = hasMultiple ? '' : 'none';
     modalNext.style.display = hasMultiple ? '' : 'none';
+    modalCount.style.display = hasMultiple ? '' : 'none';
+    modalCount.textContent = hasMultiple ? `${activePhotoIndex + 1} / ${photos.length}` : '';
+
+    modalThumbs.querySelectorAll('img').forEach((el, i) => {
+      el.classList.toggle('active', i === activePhotoIndex);
+    });
   }
 
   function closeModal() {
     modal.classList.remove('open');
     activeListing = null;
-    modalVideo.pause();
   }
 
   modalClose.addEventListener('click', closeModal);
@@ -164,15 +173,15 @@
     if (e.key === 'Escape') closeModal();
   });
   modalPrev.addEventListener('click', () => {
-    const total = slideCount();
-    if (!total) return;
-    activePhotoIndex = (activePhotoIndex - 1 + total) % total;
+    const photos = (activeListing && activeListing.photos) || [];
+    if (!photos.length) return;
+    activePhotoIndex = (activePhotoIndex - 1 + photos.length) % photos.length;
     updateModalPhoto();
   });
   modalNext.addEventListener('click', () => {
-    const total = slideCount();
-    if (!total) return;
-    activePhotoIndex = (activePhotoIndex + 1) % total;
+    const photos = (activeListing && activeListing.photos) || [];
+    if (!photos.length) return;
+    activePhotoIndex = (activePhotoIndex + 1) % photos.length;
     updateModalPhoto();
   });
 
