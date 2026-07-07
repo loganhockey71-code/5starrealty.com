@@ -78,6 +78,7 @@
 .admin-row-actions button.danger { color: #c0392b; border-color: rgba(192,57,43,0.35); }
 .admin-status-pill { padding: 3px 10px; border-radius: 20px; font-size: 0.78rem; font-weight: 600; }
 .admin-status-pill.active { background: var(--accent-dim); color: var(--accent-text); }
+.admin-status-pill.new { background: rgba(131,101,36,0.18); color: var(--accent-deep); }
 .admin-status-pill.pending { background: rgba(184,148,63,0.18); color: var(--accent-soft); }
 .admin-status-pill.sold { background: var(--border-default); color: var(--text-secondary); }
 
@@ -262,6 +263,7 @@
         <div class="admin-field">
           <label for="status">Status</label>
           <select id="status" name="status">
+            <option value="New">New Listing</option>
             <option value="Active">Active</option>
             <option value="Pending">Pending</option>
             <option value="Sold">Sold</option>

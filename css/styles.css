@@ -1967,8 +1967,8 @@ a.contact-link.big:hover { color: var(--accent-text); }
   text-transform: uppercase;
   box-shadow: var(--shadow-sm);
 }
-.listing-tag.tag-new,
 .listing-tag.tag-active { background: var(--accent); color: #fff; border-color: var(--accent); }
+.listing-tag.tag-new { background: var(--accent-deep); color: #fff; border-color: var(--accent-deep); }
 .listing-tag.tag-pending { background: var(--accent-soft); color: #fff; border-color: var(--accent-soft); }
 .listing-tag.tag-sold { background: var(--text-secondary); color: var(--bg-base); border-color: var(--text-secondary); }
 .listing-card .listing-info { padding: 22px 24px 24px; }
