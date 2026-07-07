@@ -2032,6 +2032,9 @@ a.contact-link.big:hover { color: var(--accent-text); }
 }
 .listing-modal-gallery { position: relative; aspect-ratio: 16 / 10; background: var(--bg-base); }
 .listing-modal-gallery img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.listing-modal-gallery img.hidden-slide { display: none; }
+.listing-modal-gallery video { width: 100%; height: 100%; object-fit: cover; display: none; background: #000; }
+.listing-modal-gallery video.active { display: block; }
 .listing-modal-nav {
   position: absolute; top: 50%; transform: translateY(-50%);
   width: 38px; height: 38px; border-radius: 50%;

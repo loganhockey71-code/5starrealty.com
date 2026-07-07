@@ -142,6 +142,7 @@
     <button class="listing-modal-close" id="listingModalClose" aria-label="Close">&times;</button>
     <div class="listing-modal-gallery">
       <img id="listingModalImg" src="" alt="">
+      <video id="listingModalVideo" controls></video>
       <button class="listing-modal-nav prev" id="listingModalPrev" aria-label="Previous photo">&#8249;</button>
       <button class="listing-modal-nav next" id="listingModalNext" aria-label="Next photo">&#8250;</button>
     </div>
@@ -261,8 +262,12 @@
         <textarea id="ownerDescription" name="description"></textarea>
       </div>
       <div class="owner-field">
-        <label for="ownerPhotos">Photos</label>
+        <label for="ownerPhotos">Photos (up to 50)</label>
         <input type="file" id="ownerPhotos" name="photos" accept="image/*" multiple>
+      </div>
+      <div class="owner-field">
+        <label for="ownerVideo">Video (1 max)</label>
+        <input type="file" id="ownerVideo" name="video" accept="video/*">
       </div>
       <div class="owner-form-actions">
         <button type="button" class="owner-cancel-btn" id="ownerCancelFormBtn">Cancel</button>

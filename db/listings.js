@@ -32,6 +32,7 @@ function createListingsDb(dataFile) {
       description: data.description || '',
       status: data.status || 'Active',
       photos: data.photos || [],
+      video: data.video || '',
       createdAt: now,
       updatedAt: now,
     };
@@ -56,6 +57,7 @@ function createListingsDb(dataFile) {
       description: data.description ?? existing.description,
       status: data.status ?? existing.status,
       photos: data.photos ?? existing.photos,
+      video: data.video ?? existing.video ?? '',
       updatedAt: new Date().toISOString(),
     };
     listings[idx] = updated;

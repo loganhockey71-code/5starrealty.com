@@ -30,14 +30,23 @@ const storage = multer.diskStorage({
 
 const upload = multer({
   storage,
-  limits: { fileSize: 5 * 1024 * 1024 },
+  limits: { fileSize: 200 * 1024 * 1024 },
   fileFilter: (req, file, cb) => {
-    if (!file.mimetype.startsWith('image/')) {
-      return cb(new Error('Only image files are allowed'));
+    if (file.fieldname === 'video') {
+      if (!file.mimetype.startsWith('video/')) {
+        return cb(new Error('Video must be a video file'));
+      }
+    } else if (!file.mimetype.startsWith('image/')) {
+      return cb(new Error('Only image files are allowed for photos'));
     }
     cb(null, true);
   },
 });
+
+const uploadListingFiles = upload.fields([
+  { name: 'photos', maxCount: 50 },
+  { name: 'video', maxCount: 1 },
+]);
 
 // ---- Public routes ----
 
@@ -64,27 +73,34 @@ router.get('/admin/listings', requireAuth, (req, res) => {
   res.json(draftDb.readAll());
 });
 
-router.post('/admin/listings', requireAuth, upload.array('photos', 12), (req, res) => {
-  const photos = (req.files || []).map((f) => `/uploads/${f.filename}`);
-  const listing = draftDb.create({ ...req.body, photos });
+router.post('/admin/listings', requireAuth, uploadListingFiles, (req, res) => {
+  const files = req.files || {};
+  const photos = (files.photos || []).map((f) => `/uploads/${f.filename}`);
+  const video = files.video && files.video[0] ? `/uploads/${files.video[0].filename}` : '';
+  const listing = draftDb.create({ ...req.body, photos, video });
   res.status(201).json(listing);
 });
 
-router.put('/admin/listings/:id', requireAuth, upload.array('photos', 12), (req, res) => {
+router.put('/admin/listings/:id', requireAuth, uploadListingFiles, (req, res) => {
   const existing = draftDb.getById(req.params.id);
   if (!existing) return res.status(404).json({ error: 'Listing not found' });
 
   let removePhotos = req.body.removePhotos || [];
   if (!Array.isArray(removePhotos)) removePhotos = [removePhotos];
 
+  const files = req.files || {};
   const remainingPhotos = existing.photos.filter((p) => !removePhotos.includes(p));
-  const newPhotos = (req.files || []).map((f) => `/uploads/${f.filename}`);
+  const newPhotos = (files.photos || []).map((f) => `/uploads/${f.filename}`);
 
-  // Photo files are never deleted from disk here: the currently-published
+  const newVideo = files.video && files.video[0] ? `/uploads/${files.video[0].filename}` : null;
+  const video = newVideo || (req.body.removeVideo ? '' : existing.video || '');
+
+  // Photo/video files are never deleted from disk here: the currently-published
   // listing (or a history snapshot) may still reference them until Publish.
   const updated = draftDb.update(req.params.id, {
     ...req.body,
     photos: [...remainingPhotos, ...newPhotos],
+    video,
   });
 
   res.json(updated);

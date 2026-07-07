@@ -4,6 +4,7 @@
 
   const modal = document.getElementById('listingModal');
   const modalImg = document.getElementById('listingModalImg');
+  const modalVideo = document.getElementById('listingModalVideo');
   const modalPrev = document.getElementById('listingModalPrev');
   const modalNext = document.getElementById('listingModalNext');
   const modalTitle = document.getElementById('listingModalTitle');
@@ -118,12 +119,33 @@
     modal.classList.add('open');
   }
 
+  function slideCount() {
+    const photos = (activeListing && activeListing.photos) || [];
+    const hasVideo = Boolean(activeListing && activeListing.video);
+    return photos.length + (hasVideo ? 1 : 0);
+  }
+
   function updateModalPhoto() {
     const photos = (activeListing && activeListing.photos) || [];
-    const photo = photos.length ? photos[activePhotoIndex] : placeholderPhoto();
-    modalImg.src = photo;
-    modalImg.alt = activeListing ? activeListing.address : '';
-    const hasMultiple = photos.length > 1;
+    const hasVideo = Boolean(activeListing && activeListing.video);
+    const onVideoSlide = hasVideo && activePhotoIndex === photos.length;
+
+    if (onVideoSlide) {
+      modalVideo.src = activeListing.video;
+      modalVideo.classList.add('active');
+      modalImg.classList.add('hidden-slide');
+    } else {
+      const photo = photos.length ? photos[activePhotoIndex] : placeholderPhoto();
+      modalImg.src = photo;
+      modalImg.alt = activeListing ? activeListing.address : '';
+      modalImg.classList.remove('hidden-slide');
+      modalVideo.classList.remove('active');
+      modalVideo.pause();
+      modalVideo.removeAttribute('src');
+      modalVideo.load();
+    }
+
+    const hasMultiple = slideCount() > 1;
     modalPrev.style.display = hasMultiple ? '' : 'none';
     modalNext.style.display = hasMultiple ? '' : 'none';
   }
@@ -131,6 +153,7 @@
   function closeModal() {
     modal.classList.remove('open');
     activeListing = null;
+    modalVideo.pause();
   }
 
   modalClose.addEventListener('click', closeModal);
@@ -141,15 +164,15 @@
     if (e.key === 'Escape') closeModal();
   });
   modalPrev.addEventListener('click', () => {
-    const photos = (activeListing && activeListing.photos) || [];
-    if (!photos.length) return;
-    activePhotoIndex = (activePhotoIndex - 1 + photos.length) % photos.length;
+    const total = slideCount();
+    if (!total) return;
+    activePhotoIndex = (activePhotoIndex - 1 + total) % total;
     updateModalPhoto();
   });
   modalNext.addEventListener('click', () => {
-    const photos = (activeListing && activeListing.photos) || [];
-    if (!photos.length) return;
-    activePhotoIndex = (activePhotoIndex + 1) % photos.length;
+    const total = slideCount();
+    if (!total) return;
+    activePhotoIndex = (activePhotoIndex + 1) % total;
     updateModalPhoto();
   });
 

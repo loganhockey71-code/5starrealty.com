@@ -21,9 +21,12 @@
   const cancelFormBtn = document.getElementById('cancelFormBtn');
   const existingPhotosField = document.getElementById('existingPhotosField');
   const existingPhotosEl = document.getElementById('existingPhotos');
+  const existingVideoField = document.getElementById('existingVideoField');
+  const existingVideoEl = document.getElementById('existingVideo');
 
   let listings = [];
   let removedPhotos = [];
+  let removeVideo = false;
   let editingId = null;
 
   function formatPrice(price) {
@@ -219,6 +222,7 @@
   function openForm(listing) {
     listingForm.reset();
     removedPhotos = [];
+    removeVideo = false;
     editingId = listing ? listing.id : null;
     formTitle.textContent = listing ? 'Edit Property' : 'Add Property';
 
@@ -233,9 +237,12 @@
       document.getElementById('sqft').value = listing.sqft;
       document.getElementById('description').value = listing.description || '';
       renderExistingPhotos(listing.photos || []);
+      renderExistingVideo(listing.video || '');
     } else {
       existingPhotosField.style.display = 'none';
       existingPhotosEl.innerHTML = '';
+      existingVideoField.style.display = 'none';
+      existingVideoEl.innerHTML = '';
     }
 
     formOverlay.classList.add('open');
@@ -260,6 +267,23 @@
     });
   }
 
+  function renderExistingVideo(video) {
+    if (!video) {
+      existingVideoField.style.display = 'none';
+      return;
+    }
+    existingVideoField.style.display = '';
+    existingVideoEl.innerHTML = '';
+    const wrap = document.createElement('div');
+    wrap.className = 'admin-existing-photo';
+    wrap.innerHTML = `<video src="${video}" muted></video><button type="button">&times;</button>`;
+    wrap.querySelector('button').addEventListener('click', () => {
+      removeVideo = true;
+      wrap.remove();
+    });
+    existingVideoEl.appendChild(wrap);
+  }
+
   function closeForm() {
     formOverlay.classList.remove('open');
   }
@@ -275,6 +299,7 @@
     e.preventDefault();
     const formData = new FormData(listingForm);
     removedPhotos.forEach((url) => formData.append('removePhotos', url));
+    if (removeVideo) formData.append('removeVideo', '1');
 
     const url = editingId ? `/api/admin/listings/${editingId}` : '/api/admin/listings';
     const method = editingId ? 'PUT' : 'POST';
