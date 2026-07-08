@@ -4,4 +4,4 @@ Disallow: /admin.html
 Disallow: /admin
 Disallow: /api/
 
-Sitemap: https://5starrealty.com/sitemap.xml
+Sitemap: https://5starrealtyfl.com/sitemap.xml
